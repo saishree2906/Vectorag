@@ -1,0 +1,383 @@
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-main: #0a0b0e;
+  --bg-sidebar: #11141b;
+  --accent-blue: #3b82f6;
+  --border-color: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: #f1f5f9;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow: hidden;
+}
+
+.main-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 300px;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Chat Area Styling */
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.header {
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 11, 14, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Glassmorphism Input */
+/* src/App.css - High-Fidelity Input Box Update */
+
+.input-area {
+  padding: 30px 40px 40px;
+  background: linear-gradient(to top, var(--bg-main) 60%, transparent);
+}
+
+.glass-input-wrapper {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px; /* Slightly more rounded */
+  display: flex;
+  padding: 6px 10px 6px 18px; /* Precise padding for internal elements */
+  align-items: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.glass-input-wrapper:focus-within {
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.glass-input-wrapper input {
+  background: transparent;
+  border: none;
+  color: #f1f5f9;
+  flex: 1;
+  padding: 14px 10px;
+  font-size: 15px;
+  outline: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Matching the placeholder color and weight */
+.glass-input-wrapper input::placeholder {
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* The Send Button Styling to match the blue circle/square in the reference */
+.send-btn-active {
+  background: #1e293b !important; /* Darker blue shade from reference */
+  border-radius: 12px !important;
+  width: 44px;
+  height: 44px;
+  transition: all 0.2s ease;
+}
+
+.send-btn-active:hover {
+  background: #3b82f6 !important;
+  transform: translateY(-1px);
+}
+
+.send-btn-active:disabled {
+  opacity: 0.3;
+  background: transparent !important;
+}
+
+/* The footer text below the input */
+.footer-label {
+  font-size: 9px;
+  color: #475569;
+  text-align: center;
+  margin-top: 15px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+/* App.css - Status Glow Effects */
+
+.status-card {
+  background: #0c111b;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 30px;
+  transition: all 0.5s ease;
+}
+
+/* Green Glow when READY */
+.status-card.ready {
+  border-color: rgba(34, 197, 94, 0.3);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.1);
+}
+
+.status-text {
+  font-size: 10px;
+  font-weight: 900;
+  color: #64748b;
+  margin-top: 15px;
+  letter-spacing: 2px;
+}
+
+.status-text.ready {
+  color: #22c55e;
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+}
+
+/* Animation for processing */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 2s linear infinite;
+}
+/* App.css - Missing Visual Elements */
+
+/* Status Dots & Glows */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+.dot.standby {
+  background: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
+}
+
+/* sidebar labels */
+.section-label {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+/* Control Buttons & Hover */
+.control-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #111724;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 12px;
+}
+
+.control-button:hover {
+  transform: scale(1.02);
+  background: #1a2235;
+  border-color: #3b82f6;
+}
+
+/* Bot Avatar */
+.bot-avatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Timestamp */
+.timestamp {
+  font-size: 10px;
+  color: #64748b;
+  font-family: monospace;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+}
+/* App.css - Final Refinements */
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.logo-box {
+  width: 44px;
+  height: 44px;
+  background: #3b82f6;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+}
+
+.standby-dot {
+  width: 6px;
+  height: 6px;
+  background: #f59e0b;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #f59e0b;
+}
+
+/* Bot Icon & Bubble Layout */
+.message-row.bot {
+  display: flex;
+  gap: 20px;
+}
+
+.bot-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.msg-meta {
+  font-size: 10px;
+  color: #64748b;
+  font-family: monospace;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.meta-dot {
+  width: 4px;
+  height: 4px;
+  background: #3b82f6;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+
+/* Sidebar Header Glow */
+.standby-dot {
+  width: 6px;
+  height: 6px;
+  background: #f59e0b;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #f59e0b;
+}
+
+/* Header Status Row */
+.header-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.header-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.header-dot.standby { background: #f59e0b; box-shadow: 0 0 8px #f59e0b; }
+.header-dot.ready { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+
+.header-status-text {
+  font-size: 10px;
+  font-weight: bold;
+  color: #64748b;
+  letter-spacing: 1px;
+}
+
+/* Document Status: Processed State */
+.processed-state {
+  text-align: left;
+  width: 100%;
+}
+
+.doc-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.doc-icon-box {
+  padding: 8px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 8px;
+}
+
+.doc-name {
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.doc-meta {
+  font-size: 9px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.ready-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 900;
+  color: #22c55e;
+  letter-spacing: 1px;
+}
